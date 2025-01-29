@@ -29,7 +29,7 @@ app.get('/api/products', (req, res) => {
     connection.query(query, (err, results) => {
         if (err) throw err;
 
-        const baseURL = `http://localhost:${PORT}`; // Adjust the base URL if needed
+        const baseURL = `https://v2ecom.onrender.com/`; // Adjust the base URL if needed
         const products = results.map(product => ({
             ...product,
             image_url: `${baseURL}/images/${product.image}`, // Add full image URL
