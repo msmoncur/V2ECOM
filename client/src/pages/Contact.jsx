@@ -1,5 +1,6 @@
 // src/pages/Contact.jsx
 import React, { useState } from 'react';
+import coverImage from '../images/coverImage.jpg'
 
 const Contact = () => {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -43,7 +44,7 @@ const Contact = () => {
             {/* Image Section */}
             <div className="md:w-1/2">
                 <img
-                    src="src/images/coverImage.jpg"
+                    src={coverImage}
                     className="w-full h-auto rounded shadow-lg"
                 />
             </div>
