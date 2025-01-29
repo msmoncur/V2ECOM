@@ -1,0 +1,75 @@
+[
+    {
+        "image": "coat.jpg",
+        "title": "NOUR HAMMOUR",
+        "description": "Joni reversible shearling coat",
+        "price": "$2,635",
+        "product_type": "Outerwear"
+    },
+    {
+        "image": "collaredShirt.jpg",
+        "title": "SAINT LAURENT",
+        "description": "Cotton-twill shirt",
+        "price": "$2,500"
+    },
+    {
+        "image": "dress.jpg",
+        "title": "SAINT LAURENT",
+        "description": "Lace-trimmed silk-satin midi dress",
+        "price": "$4,900"
+    },
+    {
+        "image": "fragrance.jpg",
+        "title": "TOM FORD BEAUTY",
+        "description": "Eau de Parfum - Ebene Fume, 50ml",
+        "price": "$295"
+    },
+    {
+        "image": "laceSandal.jpg",
+        "title": "AQUAZZURA",
+        "description": "Alex Riveierie 105 cutout leather sandals",
+        "price": "$1,095"
+    },
+    {
+        "image": "leatherPants.jpg",
+        "title": "TOM FORD",
+        "description": "Paneled leather straight-leg pants",
+        "price": "$4,450"
+    },
+    {
+        "image": "meshHeel.jpg",
+        "title": "ALAIA",
+        "description": "90 fishnet and patent-leather pumps",
+        "price": "$1,050"
+    },
+    {
+        "image": "sherling.jpg",
+        "title": "SAINT LAURENT",
+        "description": "Shearling jacket",
+        "price": "$9,800"
+    },
+    {
+        "image": "shoulderBag.jpg",
+        "title": "ACNE STUDIOS",
+        "description": "Multipocket leather shoulder bag",
+        "price": "$1,650"
+    },
+    {
+        "image": "tanBlouse.jpg",
+        "title": "SAINT LAURENT",
+        "description": "Gathered tie-detailed silk-chiffon blouse",
+        "price": "$2,200"
+    },
+    {
+        "image": "skirt.jpg",
+        "title": "SAINT LAURENT",
+        "description": "Wool midi skirt",
+        "price": "$1,800"
+    },
+    {
+        "image": "suedeBag.jpg",
+        "title": "METIER",
+        "description": "Weekend XL leather-trimmed suede tote",
+        "price": "$5,250"
+    }
+]
