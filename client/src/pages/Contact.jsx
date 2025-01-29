@@ -1,6 +1,6 @@
 // src/pages/Contact.jsx
 import React, { useState } from 'react';
-import coverImage from '../images/coverImage.jpg'
+import coverImage from '../assets/images/coverImage.jpg'
 
 const Contact = () => {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
