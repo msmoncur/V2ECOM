@@ -27,7 +27,7 @@ const FeaturedCategories = () => {
 
     return (
         <Slider {...sliderSettings}>
-            {/* Category 1 */}
+            {/* Image 1 */}
             <div className="text-center">
                 <img
                     src={IMG1}
@@ -36,7 +36,7 @@ const FeaturedCategories = () => {
                 />
             </div>
 
-            {/* Category 2 */}
+            {/* Image 2 */}
             <div className="text-center">
                 <img
                     src={IMG2}
@@ -45,7 +45,7 @@ const FeaturedCategories = () => {
                 />
             </div>
 
-            {/* Add More Categories */}
+            {/* More images */}
             <div className="text-center">
                 <img
                     src={IMG3}

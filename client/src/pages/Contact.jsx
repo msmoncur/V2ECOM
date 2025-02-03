@@ -1,7 +1,7 @@
-// src/pages/Contact.jsx
 import React, { useState } from 'react';
 import coverImage from '../assets/images/coverImage.jpg'
 
+// Function to handle input field changes
 const Contact = () => {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
     const [errors, setErrors] = useState({});
@@ -10,6 +10,7 @@ const Contact = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
+    // Function to validate form fields 
     const validateForm = () => {
         const newErrors = {};
 
@@ -26,9 +27,10 @@ const Contact = () => {
         if (!formData.message.trim()) {
             newErrors.message = 'Message is required';
         }
-
+        //updating error state with validation messages
         setErrors(newErrors);
 
+        //true if no errors
         return Object.keys(newErrors).length === 0;
     };
 

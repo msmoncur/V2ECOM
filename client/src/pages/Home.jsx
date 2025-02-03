@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import VideoEmbed from "../components/VideoEmbed";
@@ -29,15 +28,15 @@ const Home = () => {
         }
     };
 
-    // Filter Function for Featured Categories
-    const filterByCategory = (category) => {
-        if (category === "All") {
-            setFilteredProducts(products);
-        } else {
-            const filtered = products.filter((product) => product.product_type === category);
-            setFilteredProducts(filtered);
-        }
-    };
+    // Filter Function for Featured Categories (did not use)
+    // const filterByCategory = (category) => {
+    //     if (category === "All") {
+    //         setFilteredProducts(products);
+    //     } else {
+    //         const filtered = products.filter((product) => product.product_type === category);
+    //         setFilteredProducts(filtered);
+    //     }
+    // };
 
     return (
         <div className="container mx-auto px-4 py-8">
@@ -62,7 +61,7 @@ const Home = () => {
                 {/* Button Component */}
                 <Button
                     label="SHOP SEASON 25"
-                    onClick={() => navigate("/products")}
+                    to="/Products"
                     className="mt-4"
                 />
             </div>
