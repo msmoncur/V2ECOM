@@ -17,13 +17,22 @@ const connection = mysql.createConnection({
 console.log('PORT:', process.env.PORT);
 console.log('DB_HOST:', process.env.DB_HOST);
 
-app.use(express.static(path.join(__dirname, '../../client/dist')));
-//location of static files from client fokder
 
-//Serve Images from folder
+app.use(express.static(path.join(__dirname, '../../client/dist')));
+//location of static files 
+
+const cors = require('cors');
+
+// Add this near the top of your server.js, before your routes
+app.use(cors({
+    origin: ['http://localhost:5173', 'http://localhost:5174'], // Add your frontend dev server ports
+    credentials: true
+}));
+
+//Serve Static Images
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-// Products Page content
+// Products Page Route
 app.get('/api/products', (req, res) => {
     const query = 'SELECT * FROM products';
     connection.query(query, (err, results) => {
@@ -45,7 +54,7 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../../client/dist/index.html'));
 });
 
-//starting express server
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 }); 

@@ -1,30 +1,35 @@
-import React, { useEffect, useState } from 'react'; // Importing React and hooks
+import React, { useEffect, useState } from 'react';
 
-
-//state to hold products
 const Products = () => {
     const [products, setProducts] = useState([]);
-    //state to hold filtered products
     const [filteredProducts, setFilteredProducts] = useState([]);
-    //state to show visibility and filter options
     const [showFilters, setShowFilters] = useState(false);
 
+    // Add environment checking
+    const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    const API_BASE_URL = isLocalhost ? 'http://localhost:3000' : '';
 
-    //hook to fetch products
     useEffect(() => {
         fetchProducts();
     }, []);
 
-
-    //function to fetch products
     const fetchProducts = async () => {
         try {
-            const response = await fetch('/api/products'); // Relative path 
+            const response = await fetch(`${API_BASE_URL}/api/products`);
             if (response.ok) {
                 const data = await response.json();
-                console.log('Fetched Products:', data); // Log the data
-                setProducts(data);
-                setFilteredProducts(data); // Initialize filtered products
+                console.log('Raw data:', data);
+
+                // Transform the data to include full image URLs for local development
+                const productsWithImages = data.map(product => ({
+                    ...product,
+                    // Prefix image_url with API_BASE_URL only in local development
+                    image_url: isLocalhost ? `${API_BASE_URL}${product.image_url}` : product.image_url
+                }));
+
+                console.log('Processed products:', productsWithImages);
+                setProducts(productsWithImages);
+                setFilteredProducts(productsWithImages);
             } else {
                 console.error('Error fetching products:', response.statusText);
             }
@@ -33,19 +38,25 @@ const Products = () => {
         }
     };
 
-    // Sorting products from low to high 
+    // Debug function to log image loading errors
+    const handleImageError = (e, product) => {
+        console.error('Image failed to load:', {
+            product: product.title,
+            attemptedUrl: e.target.src
+        });
+    };
+
+    // Your existing sort and filter functions remain the same
     const sortLowToHigh = () => {
         const sorted = [...filteredProducts].sort((a, b) => a.price - b.price);
         setFilteredProducts(sorted);
     };
 
-    //function to sort products from high to low 
     const sortHighToLow = () => {
         const sorted = [...filteredProducts].sort((a, b) => b.price - a.price);
         setFilteredProducts(sorted);
     };
 
-    // Filtering products by category
     const filterByCategory = (category) => {
         if (category === 'All') {
             setFilteredProducts(products);
@@ -67,7 +78,7 @@ const Products = () => {
                     <div className="flex justify-center">
                         <button
                             className="text-lg font-semibold"
-                            onClick={() => setShowFilters(!showFilters)} // Toggle filter options
+                            onClick={() => setShowFilters(!showFilters)}
                         >
                             Filter
                         </button>
@@ -128,7 +139,17 @@ const Products = () => {
             {/* Product Grid */}
             <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-4 mt-4">
                 {filteredProducts.map((product) => (
-                    <ProductCard key={product.id} product={product} />
+                    <div key={product.id} className="border border-gray-200 rounded-lg shadow-sm p-4 text-center">
+                        <img
+                            src={product.image_url}
+                            alt={product.title}
+                            className="h-100 w-full object-contain mb-4"
+                            onError={(e) => handleImageError(e, product)}
+                        />
+                        <h3 className="text-lg font-semibold mb-2">{product.title}</h3>
+                        <p className="text-sm mb-2">{product.description}</p>
+                        <p className="text-xl font-bold">${product.price}</p>
+                    </div>
                 ))}
             </div>
         </div>
