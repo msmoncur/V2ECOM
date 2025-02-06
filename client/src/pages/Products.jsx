@@ -128,16 +128,7 @@ const Products = () => {
             {/* Product Grid */}
             <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-4 mt-4">
                 {filteredProducts.map((product) => (
-                    <div key={product.id} className="border border-gray-200 rounded-lg shadow-sm p-4 text-center">
-                        <img
-                            src={product.image_url}
-                            alt={product.title}
-                            className="h-100 w-full object-contain mb-4"
-                        />
-                        <h3 className="text-lg font-semibold mb-2">{product.title}</h3>
-                        <p className="text-sm mb-2">{product.description}</p>
-                        <p className="text-xl font-bold">${product.price}</p>
-                    </div>
+                    <ProductCard key={product.id} product={product} />
                 ))}
             </div>
         </div>
