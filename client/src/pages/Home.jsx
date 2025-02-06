@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import VideoEmbed from "../components/VideoEmbed";
@@ -6,38 +6,6 @@ import Button from "../components/Button";
 import FeaturedCategories from "../components/FeaturedCategories"; // Ensure the path is correct
 
 const Home = () => {
-    const [products, setProducts] = useState([]);
-    const [filteredProducts, setFilteredProducts] = useState([]);
-
-    useEffect(() => {
-        fetchProducts();
-    }, []);
-
-    const fetchProducts = async () => {
-        try {
-            const response = await fetch("/api/products");
-            if (response.ok) {
-                const data = await response.json();
-                setProducts(data);
-                setFilteredProducts(data); // Initialize filtered products
-            } else {
-                console.error("Error fetching products:", response.statusText);
-            }
-        } catch (error) {
-            console.error("Fetch error:", error);
-        }
-    };
-
-    // Filter Function for Featured Categories (did not use)
-    // const filterByCategory = (category) => {
-    //     if (category === "All") {
-    //         setFilteredProducts(products);
-    //     } else {
-    //         const filtered = products.filter((product) => product.product_type === category);
-    //         setFilteredProducts(filtered);
-    //     }
-    // };
-
     return (
         <div className="container mx-auto px-4 py-8">
             {/* Video Embed Component */}
@@ -61,7 +29,7 @@ const Home = () => {
                 {/* Button Component */}
                 <Button
                     label="SHOP SEASON 25"
-                    to="/Products"
+                    to="/products"
                     className="mt-4"
                 />
             </div>
@@ -71,7 +39,7 @@ const Home = () => {
                 <h1 className="text-4xl font-semibold tracking-tight text-balance text-white sm:text-5xl mb-6">
                     WAITING ROOM
                 </h1>
-                <FeaturedCategories filterByCategory={filterByCategory} />
+                <FeaturedCategories />
             </div>
         </div>
     );
