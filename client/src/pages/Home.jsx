@@ -3,7 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import VideoEmbed from "../components/VideoEmbed";
 import Button from "../components/Button";
-import FeaturedCategories from "../components/FeaturedCategories"; // Ensure the path is correct
+import FeaturedImages from "../components/FeaturedImages"; // Ensure the path is correct
 
 const Home = () => {
     return (
@@ -39,7 +39,7 @@ const Home = () => {
                 <h1 className="text-4xl font-semibold tracking-tight text-balance text-white sm:text-5xl mb-6">
                     WAITING ROOM
                 </h1>
-                <FeaturedCategories />
+                <FeaturedImages />
             </div>
         </div>
     );
